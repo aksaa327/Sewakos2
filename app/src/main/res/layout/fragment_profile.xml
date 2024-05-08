@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile.Profile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="162dp"
+            android:src="@drawable/bg_profile" />
+
+        <ImageView
+            android:id="@+id/image_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_picture"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="101dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp">
+
+            <TextView
+                android:id="@+id/username_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_medium"
+                android:layout_marginStart="18dp"
+                android:textSize="17dp"
+                android:text="Username" />
+
+            <RelativeLayout
+                android:id="@+id/username_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/username_top"
+                android:layout_marginTop="7dp">
+
+                <View
+                    android:layout_width="286dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_textfield_profile"/>
+
+                <TextView
+                    android:id="@+id/username_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="18dp"
+                    android:hint="Memuat..."
+                    android:textSize="15sp"
+                    />
+
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/email_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/username_user"
+                android:fontFamily="@font/raleway_medium"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="20dp"
+                android:textSize="17dp"
+                android:text="Email" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_top"
+                android:layout_marginTop="7dp">
+
+                <View
+                    android:layout_width="286dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_textfield_profile"/>
+
+                <TextView
+                    android:id="@+id/email_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="18dp"
+                    android:textSize="15sp"
+                    android:hint="Memuat..."
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp">
+
+            <RelativeLayout
+                android:id="@+id/btn_ubah_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                >
+
+                <View
+                    android:background="@drawable/bg_button_ubahpassword"
+                    android:layout_width="286dp"
+                    android:layout_height="47dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/text_ubah_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ubah Password"
+                        android:fontFamily="@font/raleway_medium"
+                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="7dp"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/icon_lock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/text_ubah_password"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/lock"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:background="@drawable/bg_button_ubahpassword"
+                    android:layout_width="286dp"
+                    android:layout_height="47dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/txt_ubah_pass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ubah Password"
+                        android:fontFamily="@font/raleway_medium"
+                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="7dp"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:id="@+id/icon_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/txt_ubah_pass"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/lock"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:layout_below="@+id/btn_ubah_password">
+
+                <View
+                    android:layout_width="286dp"
+                    android:layout_height="47dp"
+                    android:background="@drawable/bg_btn_logout"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/txt_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluar"
+                        android:fontFamily="@font/raleway_medium"
+                        android:textSize="17sp"
+                        android:textColor="#FA0E0E"
+                        android:layout_marginStart="7dp"
+                        android:layout_centerVertical="true"
+                        />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/txt_logout"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/fi_sr_sign_in_alt"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

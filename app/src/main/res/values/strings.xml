@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SewaKos</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="sewakost_string">SEWAKOST</string>
+    <string name="mudahnya_mencari_kos_string">Mudahnya Mencari Kos</string>
+
+    <string name="selamat_datang_string">Selamat Datang</string>
+    <string name="password_ek2_string">Password</string>
+    <string name="lupa_kata_sandi__string">Lupa Kata Sandi?</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="masuk">Masuk</string>
+</resources>

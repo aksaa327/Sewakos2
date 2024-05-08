@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "667231422366",
+    "firebase_url": "https://sewakos-be714-default-rtdb.firebaseio.com",
+    "project_id": "sewakos-be714",
+    "storage_bucket": "sewakos-be714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667231422366:android:147fdfeb89e77f845eb88f",
+        "android_client_info": {
+          "package_name": "com.example.sewakos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaULJmp8Lf4Wx0RCmSaqTZFYm4NsrOVVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

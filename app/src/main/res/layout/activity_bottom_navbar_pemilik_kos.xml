@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PemilikKos.BottomNavbarPemilikKos">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavView"
+            android:layout_width="match_parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemPaddingBottom="10dp"
+            app:itemBackground="@color/color_1"
+            app:itemIconTint="@color/color_4"
+            app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
+            app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
+            app:itemActiveIndicatorStyle="@drawable/_bg__button_masuk_ek1_shape"
+            android:layout_height="65dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

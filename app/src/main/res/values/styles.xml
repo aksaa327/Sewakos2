@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- splash_screen styles -->
+
+	<style name="BottomNavigationTextStyle" parent="@android:style/TextAppearance.Widget.TabWidget">
+		<item name="android:fontFamily">@font/fredoka_regular</item>
+	</style>
+
+</resources>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_1"
+    tools:context=".Autentication.Login">
+
+    <RelativeLayout android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+
+        <RelativeLayout
+            android:id="@+id/group_65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="73dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="128.68dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="logo"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/selamat_datang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/fredoka_bold"
+                android:textSize="32sp"
+                android:textColor="#000000"
+                android:text="@string/selamat_datang_string" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/group_63"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/group_65"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="41dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:background="@drawable/rectangle_3_shape"
+                android:fontFamily="@font/fredoka_regular">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/rectangle_3_shape"
+                    android:fontFamily="@font/fredoka_regular"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@id/password_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/email_group"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_3_shape"
+                android:hint="Password"
+                android:fontFamily="@font/fredoka_regular"
+                app:passwordToggleDrawable="@drawable/password_toggle"
+                app:passwordToggleEnabled="true"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:background="@drawable/rectangle_3_shape"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:inputType="textPassword"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/lupa_kata_sandi"
+                android:layout_width="wrap_content"
+                android:layout_height="18.2dp"
+                android:layout_below="@+id/password_group"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/fredoka_medium"
+                android:text="@string/lupa_kata_sandi__string"
+                android:textColor="#1195AD"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/belum_punya_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="73dp">
+
+            <TextView
+                android:id="@+id/text_belum_punya_akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/fredoka_regular"
+                android:text="belum punya akun?"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/daftar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/text_belum_punya_akun"
+                android:fontFamily="@font/fredoka_regular"
+                android:text="daftar"
+                android:textColor="#1195AD"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/group_64"
+            android:layout_marginTop="41dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/group_63">
+
+
+            <RelativeLayout android:id="@+id/button_masuk"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <View
+                    android:background="@drawable/rectangle_5_shape"
+                    android:layout_width="312dp"
+                    android:layout_height="41dp" />
+
+                <TextView android:id="@+id/text_masuk"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masuk"
+                    android:fontFamily="@font/fredoka_semibold"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="312dp"
+                android:layout_below="@+id/button_masuk"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:id="@+id/pemisah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" atau login dengan "
+                android:layout_below="@+id/button_masuk"
+                android:background="#F1F1F2"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                />
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_below="@+id/pemisah"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp">
+
+                <View
+                    android:background="@drawable/_bg__button_masuk_ek1_shape"
+                    android:layout_width="312dp"
+                    android:layout_height="41dp" />
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="27dp"
+                    android:layout_centerInParent="true">
+
+                    <TextView
+                        android:id="@+id/text_google"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Google"
+                        android:fontFamily="@font/fredoka_regular"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_toEndOf="@id/icon_google"
+                        android:layout_marginStart="7dp"
+                        android:layout_centerVertical="true"
+                        />
+
+                    <RelativeLayout
+                        android:id="@+id/icon_google"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageView
+                            android:id="@+id/vector"
+                            android:layout_width="12.13dp"
+                            android:layout_height="12.51dp"
+                            android:layout_marginStart="12.68dp"
+                            android:layout_marginTop="11.16dp"
+                            android:contentDescription="vector"
+                            android:src="@drawable/vector" />
+
+                        <ImageView
+                            android:id="@+id/vector_ek1"
+                            android:layout_width="19.65dp"
+                            android:layout_height="10.78dp"
+                            android:layout_marginStart="1.4dp"
+                            android:layout_marginTop="16.12dp"
+                            android:contentDescription="vector_ek1"
+                            android:src="@drawable/vector_ek1" />
+
+                        <ImageView
+                            android:id="@+id/vector_ek2"
+                            android:layout_width="5.54dp"
+                            android:layout_height="11.97dp"
+                            android:layout_marginStart="0.06dp"
+                            android:layout_marginTop="7.58dp"
+                            android:contentDescription="vector_ek2"
+                            android:src="@drawable/vector_ek2" />
+
+                        <ImageView
+                            android:id="@+id/vector_ek3"
+                            android:layout_width="19.73dp"
+                            android:layout_height="10.78dp"
+                            android:layout_marginStart="1.4dp"
+                            android:layout_marginTop="0.24dp"
+                            android:contentDescription="vector_ek3"
+                            android:src="@drawable/vector_ek3" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

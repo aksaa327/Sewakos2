@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_1"
+    tools:context=".Autentication.Register">
+
+    <RelativeLayout android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout android:id="@+id/top"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView android:id="@+id/logo"
+                android:src="@drawable/logo"
+                android:contentDescription="logo"
+                android:layout_width="100dp"
+                android:layout_height="128.68dp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/text_daftar_akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/fredoka_bold"
+                android:text="Daftar Akun"
+                android:textColor="@color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/username_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:fontFamily="@font/fredoka_regular"
+                android:background="@drawable/rectangle_3_shape">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:background="@drawable/rectangle_3_shape"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/username_group"
+                android:layout_marginTop="10dp"
+                android:hint="Email"
+                android:background="@drawable/rectangle_3_shape">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:background="@drawable/rectangle_3_shape"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_3_shape"
+                android:layout_marginTop="10dp"
+                android:hint="Password"
+                app:passwordToggleDrawable="@drawable/password_toggle"
+                app:passwordToggleEnabled="true"
+                android:layout_below="@+id/email_group">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:inputType="textPassword"
+                    android:background="@drawable/rectangle_3_shape"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/repassword_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Re-Password"
+                android:layout_below="@+id/password_group"
+                android:layout_marginTop="10dp"
+                app:passwordToggleDrawable="@drawable/password_toggle"
+                app:passwordToggleEnabled="true"
+                android:background="@drawable/rectangle_3_shape"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRepassword"
+                    android:layout_width="312dp"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/fredoka_regular"
+                    android:inputType="textPassword"
+                    android:background="@drawable/rectangle_3_shape"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_select_role"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:text="Daftar Sebagai: "
+                android:textSize="12sp"
+                android:fontFamily="@font/fredoka_medium"
+                android:layout_below="@+id/repassword_group"
+                android:layout_marginTop="10dp"
+                />
+
+            <RadioGroup
+                android:id="@+id/role_radio_group"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_select_role"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/role1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/rectangle_3_shape"
+                    android:text="Pemilik Kos" />
+
+                <RadioButton
+                    android:id="@+id/role2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/rectangle_3_shape"
+                    android:text="Pencari Kos" />
+
+            </RadioGroup>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/button_daftar"
+            android:layout_below="@+id/middle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <View
+                android:background="@drawable/rectangle_5_shape"
+                android:layout_width="312dp"
+                android:layout_height="41dp" />
+
+            <TextView android:id="@+id/text_daftar"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar"
+                android:fontFamily="@font/fredoka_semibold"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/text_sudah_punya_akun_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudah punya akun? "
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:fontFamily="@font/fredoka_medium"/>
+
+            <TextView
+                android:id="@+id/log_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/text_sudah_punya_akun_"
+                android:text="Login"
+                android:textColor="@color/color_4"
+                android:textSize="12sp"
+                android:fontFamily="@font/fredoka_medium"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
