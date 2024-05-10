@@ -32,7 +32,7 @@
                 android:layout_below="@+id/logo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/fredoka_bold"
+                android:fontFamily="@font/archivo_black"
                 android:text="Daftar Akun"
                 android:textColor="@color/black"
                 android:textSize="32sp"
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                android:fontFamily="@font/fredoka_regular"
+                android:fontFamily="@font/inter_regular"
                 android:background="@drawable/rectangle_3_shape">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -62,7 +62,7 @@
                     android:layout_width="312dp"
                     android:layout_height="50dp"
                     android:inputType="textPersonName"
-                    android:fontFamily="@font/fredoka_regular"
+                    android:fontFamily="@font/inter_regular"
                     android:background="@drawable/rectangle_3_shape"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -81,7 +81,7 @@
                     android:layout_width="312dp"
                     android:layout_height="50dp"
                     android:inputType="textEmailAddress"
-                    android:fontFamily="@font/fredoka_regular"
+                    android:fontFamily="@font/inter_regular"
                     android:background="@drawable/rectangle_3_shape"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,7 +101,7 @@
                     android:id="@+id/etPassword"
                     android:layout_width="312dp"
                     android:layout_height="50dp"
-                    android:fontFamily="@font/fredoka_regular"
+                    android:fontFamily="@font/inter_regular"
                     android:inputType="textPassword"
                     android:background="@drawable/rectangle_3_shape"/>
 
@@ -124,7 +124,7 @@
                     android:id="@+id/etRepassword"
                     android:layout_width="312dp"
                     android:layout_height="50dp"
-                    android:fontFamily="@font/fredoka_regular"
+                    android:fontFamily="@font/inter_regular"
                     android:inputType="textPassword"
                     android:background="@drawable/rectangle_3_shape"/>
 
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:text="Daftar Sebagai: "
                 android:textSize="12sp"
-                android:fontFamily="@font/fredoka_medium"
+                android:fontFamily="@font/inter_regular"
                 android:layout_below="@+id/repassword_group"
                 android:layout_marginTop="10dp"
                 />
@@ -155,6 +155,7 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/inter_regular"
                     android:background="@drawable/rectangle_3_shape"
                     android:text="Pemilik Kos" />
 
@@ -164,6 +165,7 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:layout_marginStart="5dp"
+                    android:fontFamily="@font/inter_regular"
                     android:background="@drawable/rectangle_3_shape"
                     android:text="Pencari Kos" />
 
@@ -185,15 +187,15 @@
                 android:layout_width="312dp"
                 android:layout_height="41dp" />
 
-            <TextView android:id="@+id/text_daftar"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_centerInParent="true"
+            <TextView
+                android:id="@+id/text_daftar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/inter_semibold"
                 android:text="Daftar"
-                android:fontFamily="@font/fredoka_semibold"
-                />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -209,10 +211,10 @@
                 android:id="@+id/text_sudah_punya_akun_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sudah punya akun? "
+                android:text="@string/sudah_punya_akun"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:fontFamily="@font/fredoka_medium"/>
+                android:fontFamily="@font/inter_regular"/>
 
             <TextView
                 android:id="@+id/log_in"
@@ -222,7 +224,7 @@
                 android:text="Login"
                 android:textColor="@color/color_4"
                 android:textSize="12sp"
-                android:fontFamily="@font/fredoka_medium"/>
+                android:fontFamily="@font/inter_regular"/>
 
         </RelativeLayout>
 

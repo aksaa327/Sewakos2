@@ -35,7 +35,7 @@
                 android:layout_below="@id/logo"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/fredoka_bold"
+                android:fontFamily="@font/archivo_black"
                 android:textSize="32sp"
                 android:textColor="#000000"
                 android:text="@string/selamat_datang_string" />
@@ -57,15 +57,15 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:background="@drawable/rectangle_3_shape"
-                android:fontFamily="@font/fredoka_regular">
+                android:fontFamily="@font/inter_regular">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     android:layout_width="312dp"
                     android:layout_height="50dp"
-                    android:inputType="textEmailAddress"
                     android:background="@drawable/rectangle_3_shape"
-                    android:fontFamily="@font/fredoka_regular"/>
+                    android:fontFamily="@font/inter_regular"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +76,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rectangle_3_shape"
                 android:hint="Password"
-                android:fontFamily="@font/fredoka_regular"
+                android:fontFamily="@font/inter_regular"
                 app:passwordToggleDrawable="@drawable/password_toggle"
                 app:passwordToggleEnabled="true"
                 >
@@ -87,7 +87,7 @@
                     android:layout_height="50dp"
                     android:ems="10"
                     android:background="@drawable/rectangle_3_shape"
-                    android:fontFamily="@font/fredoka_regular"
+                    android:fontFamily="@font/inter_regular"
                     android:inputType="textPassword"
                     />
 
@@ -100,7 +100,7 @@
                 android:layout_height="18.2dp"
                 android:layout_below="@+id/password_group"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/fredoka_medium"
+                android:fontFamily="@font/inter_regular"
                 android:text="@string/lupa_kata_sandi__string"
                 android:textColor="#1195AD"
                 android:textSize="12sp" />
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
-                android:fontFamily="@font/fredoka_regular"
+                android:fontFamily="@font/inter_regular"
                 android:text="belum punya akun?"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_toEndOf="@+id/text_belum_punya_akun"
-                android:fontFamily="@font/fredoka_regular"
+                android:fontFamily="@font/inter_regular"
                 android:text="daftar"
                 android:textColor="#1195AD"
                 android:textSize="12sp" />
@@ -161,15 +161,15 @@
                     android:layout_width="312dp"
                     android:layout_height="41dp" />
 
-                <TextView android:id="@+id/text_masuk"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_centerInParent="true"
+                <TextView
+                    android:id="@+id/text_masuk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/inter_semibold"
                     android:text="Masuk"
-                    android:fontFamily="@font/fredoka_semibold"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
@@ -184,7 +184,8 @@
                 android:id="@+id/pemisah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" atau login dengan "
+                android:text="@string/atau_login_dengan"
+                android:fontFamily="@font/inter_regular"
                 android:layout_below="@+id/button_masuk"
                 android:background="#F1F1F2"
                 android:layout_marginTop="15dp"

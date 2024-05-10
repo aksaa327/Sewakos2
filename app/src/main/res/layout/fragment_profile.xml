@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_3"
     tools:context=".Profile.Profile">
 
     <RelativeLayout
@@ -17,9 +18,12 @@
 
         <ImageView
             android:id="@+id/image_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:background="@drawable/circle_background"
             android:src="@drawable/profile_picture"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/profile_image"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="101dp"
             />
@@ -35,10 +39,10 @@
                 android:id="@+id/username_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_medium"
                 android:layout_marginStart="18dp"
-                android:textSize="17dp"
-                android:text="Username" />
+                android:fontFamily="@font/inter_medium"
+                android:text="Username"
+                android:textSize="17dp" />
 
             <RelativeLayout
                 android:id="@+id/username_user"
@@ -56,10 +60,10 @@
                     android:id="@+id/username_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_semibold"
+                    android:fontFamily="@font/inter_medium"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="18dp"
-                    android:hint="Memuat..."
+                    android:hint="@string/memuat"
                     android:textSize="15sp"
                     />
 
@@ -69,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/username_user"
-                android:fontFamily="@font/raleway_medium"
+                android:fontFamily="@font/inter_medium"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="20dp"
                 android:textSize="17dp"
@@ -90,11 +94,11 @@
                     android:id="@+id/email_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/raleway_semibold"
+                    android:fontFamily="@font/inter_medium"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="18dp"
                     android:textSize="15sp"
-                    android:hint="Memuat..."
+                    android:hint="@string/memuat"
                     />
 
             </RelativeLayout>
@@ -161,7 +165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ubah Password"
-                        android:fontFamily="@font/raleway_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:textSize="17sp"
                         android:textColor="@color/white"
                         android:layout_marginStart="7dp"
@@ -201,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Keluar"
-                        android:fontFamily="@font/raleway_medium"
+                        android:fontFamily="@font/inter_medium"
                         android:textSize="17sp"
                         android:textColor="#FA0E0E"
                         android:layout_marginStart="7dp"

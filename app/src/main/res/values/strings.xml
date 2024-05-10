@@ -10,4 +10,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="masuk">Masuk</string>
+    <string name="profile_image">profile image</string>
+    <string name="atau_login_dengan">atau login dengan</string>
+    <string name="sudah_punya_akun">Sudah punya akun?</string>
+    <string name="memuat">Memuat...</string>
 </resources>
