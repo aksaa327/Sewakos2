@@ -14,4 +14,17 @@
     <string name="atau_login_dengan">atau login dengan</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="memuat">Memuat...</string>
+    <string name="beranda">Beranda</string>
+    <string name="tambah_kos">Tambah Kos</string>
+    <string name="tambahkan">Tambahkan</string>
+    <string name="nama_kos">Nama Kos</string>
+    <string name="isi_nama_kos_anda">isi nama kos anda</string>
+    <string name="deskripsi_kos">Deskripsi Kos</string>
+    <string name="isi_deskripsi_kos_anda">isi deskripsi kos anda</string>
+    <string name="putra">Putra</string>
+    <string name="putri">Putri</string>
+    <string name="campur">Campur</string>
+    <string name="buka_peta_dan_posisikan">Buka peta dan posisikan pin untuk tampilkan alamat kos. Silahkan lengkapi dengan nomor rumah dan RT/RW, jika belum ada.</string>
+    <string name="buka_peta">Buka Peta</string>
+    <string name="atur_jumlah_kamar_yang_tersedia">atur jumlah kamar yang tersedia</string>
 </resources>
