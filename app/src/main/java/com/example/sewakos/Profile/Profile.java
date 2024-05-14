@@ -16,12 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.sewakos.AndroidUtil;
+import com.example.sewakos.Autentication.Login;
 import com.example.sewakos.R;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +44,7 @@ public class Profile extends Fragment {
 
     private TextView txt_username, txt_email;
     private ImageView imageProfile;
+    private RelativeLayout btn_loguot;
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
 
@@ -89,6 +92,7 @@ public class Profile extends Fragment {
         txt_username = view.findViewById(R.id.username_profile);
         txt_email = view.findViewById(R.id.email_profile);
         imageProfile = view.findViewById(R.id.image_profile);
+        btn_loguot = view.findViewById(R.id.btn_loguot);
 
         auth = FirebaseAuth.getInstance();
 
@@ -112,7 +116,22 @@ public class Profile extends Fragment {
                     });
         });
 
+        btn_loguot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                signOutUser();
+            }
+        });
+
         return view;
+    }
+
+    private void signOutUser() {
+        Intent login = new Intent(getActivity(), Login.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(login);
+        getActivity().finish();
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {
