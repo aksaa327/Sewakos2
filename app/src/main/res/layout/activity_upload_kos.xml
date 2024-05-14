@@ -53,6 +53,7 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/mid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:overScrollMode="never"
@@ -63,7 +64,6 @@
         app:layout_constraintHeight_default="wrap">
 
         <LinearLayout
-            android:id="@+id/mid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="12dp"
@@ -78,10 +78,11 @@
                 >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/camera"
-                    android:layout_centerInParent="true"/>
+                    android:id="@+id/upload_image_kos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/camera" />
 
             </RelativeLayout>
 
@@ -99,6 +100,7 @@
                     android:text="@string/nama_kos"/>
 
                 <EditText
+                    android:id="@+id/upload_nama_kos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_shape"
@@ -125,6 +127,7 @@
                     android:text="@string/deskripsi_kos"/>
 
                 <EditText
+                    android:id="@+id/upload_deskripsi_kos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_shape"
@@ -144,11 +147,13 @@
                 >
 
                 <RadioGroup
+                    android:id="@+id/upload_tipe_kos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/putra"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_regular"
@@ -161,6 +166,7 @@
                         android:text="@string/putra"/>
 
                     <RadioButton
+                        android:id="@+id/putri"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_regular"
@@ -174,6 +180,7 @@
                         android:text="@string/putri"/>
 
                     <RadioButton
+                        android:id="@+id/campur"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/radio_selector"
@@ -211,6 +218,7 @@
                     android:text="@string/buka_peta_dan_posisikan" />
 
                 <Button
+                    android:id="@+id/btn_maps"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -234,6 +242,7 @@
                         />
 
                     <EditText
+                        android:id="@+id/upload_catatan_alamat_kos"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:background="@drawable/rectangle_2_shape"
@@ -241,7 +250,7 @@
                         android:inputType="textMultiLine"
                         android:elevation="4dp"
                         android:paddingHorizontal="10dp"
-                        android:hint="@string/isi_deskripsi_kos_anda" />
+                        android:hint="deskripsi patokan agar kos mudah di temukan" />
 
                 </LinearLayout>
                 
@@ -261,11 +270,12 @@
                     android:text="Ketersediaan Kamar"/>
 
                 <EditText
+                    android:id="@+id/upload_ketersediaan_kamar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_shape"
                     android:fontFamily="@font/inter_regular"
-                    android:inputType="textMultiLine"
+                    android:inputType="number"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
                     android:hint="@string/atur_jumlah_kamar_yang_tersedia" />
@@ -286,6 +296,7 @@
                     android:text="Fasilitas"/>
 
                 <EditText
+                    android:id="@+id/upload_fasilitas_kos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_shape"
@@ -312,6 +323,7 @@
                     android:text="Harga"/>
 
                 <EditText
+                    android:id="@+id/upload_harga_kos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_shape"
@@ -335,6 +347,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
+            android:id="@+id/btn_upload_kos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
