@@ -51,8 +51,11 @@ public class BerandaPencariKos extends Fragment {
                 dataList.clear();
                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot kosSnapshot : userSnapshot.getChildren()) {
+                        String userId = userSnapshot.getKey();
                         AndroidUtil androidUtil = kosSnapshot.getValue(AndroidUtil.class);
                         if (androidUtil != null) {
+                            androidUtil.setId(kosSnapshot.getKey());
+                            androidUtil.setUserId(userId);
                             dataList.add(androidUtil);
                         }
                     }
@@ -65,6 +68,7 @@ public class BerandaPencariKos extends Fragment {
 
             }
         });
+
 
         return view;
     }

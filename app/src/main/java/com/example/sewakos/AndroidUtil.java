@@ -2,14 +2,32 @@ package com.example.sewakos;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-public class AndroidUtil {
+public class AndroidUtil implements Parcelable {
 
-    private String imageURL, namaKos, deskripsiKos, catatanAlamatKos, fasilitasKos, tipeKos;
+    private String id;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    private String userId;
+    private String imageURL;
+    private String namaKos;
+    private String deskripsiKos;
+    private String catatanAlamatKos;
+    private String fasilitasKos;
+    private String tipeKos;
     private Integer ketersediaanKamarKos, hargaKos;
 
     public String getImageURL() {
@@ -60,6 +78,14 @@ public class AndroidUtil {
         this.tipeKos = tipeKos;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Integer getKetersediaanKamarKos() {
         return ketersediaanKamarKos;
     }
@@ -89,6 +115,47 @@ public class AndroidUtil {
         this.tipeKos = tipeKos;
         this.ketersediaanKamarKos = ketersediaanKamarKos;
         this.hargaKos = hargaKos;
+    }
+
+    protected AndroidUtil(Parcel in) {
+        id = in.readString();
+        catatanAlamatKos = in.readString();
+        deskripsiKos = in.readString();
+        fasilitasKos = in.readString();
+        hargaKos = in.readInt();
+        imageURL = in.readString();
+        ketersediaanKamarKos = in.readInt();
+        namaKos = in.readString();
+        tipeKos = in.readString();
+    }
+
+    public static final Creator<AndroidUtil> CREATOR = new Creator<AndroidUtil>() {
+        @Override
+        public AndroidUtil createFromParcel(Parcel in) {
+            return new AndroidUtil(in);
+        }
+
+        @Override
+        public AndroidUtil[] newArray(int size) {
+            return new AndroidUtil[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(catatanAlamatKos);
+        dest.writeString(deskripsiKos);
+        dest.writeString(fasilitasKos);
+        dest.writeInt(hargaKos);
+        dest.writeString(imageURL);
+        dest.writeInt(ketersediaanKamarKos);
+        dest.writeString(namaKos);
+        dest.writeString(tipeKos);
     }
 
     public static void setProfilePic(Context context, Uri imageUri, ImageView imageView) {

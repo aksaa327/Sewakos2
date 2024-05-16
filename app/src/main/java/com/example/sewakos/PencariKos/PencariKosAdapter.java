@@ -1,6 +1,8 @@
 package com.example.sewakos.PencariKos;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,15 @@ public class PencariKosAdapter extends RecyclerView.Adapter<PencariKosAdapter.My
         Glide.with(context).load(androidUtil.getImageURL()).into(holder.recyclerImage);
         holder.recyclerNamaKos.setText(androidUtil.getNamaKos());
         holder.recyclerKetersediaanKos.setText(String.valueOf(androidUtil.getKetersediaanKamarKos()));
+
+        holder.itemView.setOnClickListener(v -> {
+            String kosId = androidUtil.getId();
+            Log.d("PencariKosAdapter", "Kos ID: " + kosId);
+            Intent intent = new Intent(context, DetailKos.class);
+            intent.putExtra("kosId", kosId);
+            intent.putExtra("userId", androidUtil.getUserId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
