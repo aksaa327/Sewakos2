@@ -17,6 +17,7 @@ import com.example.sewakos.AndroidUtil;
 import com.example.sewakos.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PencariKosAdapter extends RecyclerView.Adapter<PencariKosAdapter.MyViewHolder> {
 
@@ -38,7 +39,11 @@ public class PencariKosAdapter extends RecyclerView.Adapter<PencariKosAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         AndroidUtil androidUtil = dataList.get(position);
-        Glide.with(context).load(androidUtil.getImageURL()).into(holder.recyclerImage);
+        List<String> imageUrls = androidUtil.getImageUrls();
+        if (imageUrls != null && !imageUrls.isEmpty()) {
+            String firstImageUrl = imageUrls.get(0);
+            Glide.with(context).load(firstImageUrl).into(holder.recyclerImage);
+        }
         holder.recyclerNamaKos.setText(androidUtil.getNamaKos());
         holder.recyclerKetersediaanKos.setText(String.valueOf(androidUtil.getKetersediaanKamarKos()));
 

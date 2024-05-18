@@ -60,13 +60,21 @@
             android:layout_marginStart="12dp"
             android:orientation="vertical">
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="341dp"
-                android:id="@+id/image_detail_kos"
-                android:src="@drawable/ic_bed"
-                android:background="@drawable/rectangle_3_shape"
-                />
+                android:layout_height="300dp"
+                android:background="@drawable/rectangle_3_shape">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_auto_cycle="true"
+                    app:iss_period="1000"
+                    app:iss_delay="1000"
+                    app:iss_text_align="CENTER"/>
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"

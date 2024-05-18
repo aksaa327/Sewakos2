@@ -16,6 +16,7 @@ import com.example.sewakos.AndroidUtil;
 import com.example.sewakos.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -36,9 +37,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String imageUrl = dataList.get(position).getImageURL();
-        Log.d("ImageUrl", "URL: " + imageUrl); // Cetak URL gambar ke logcat
-        Glide.with(context).load(imageUrl).into(holder.recyclerImage);
+        AndroidUtil androidUtil = dataList.get(position);
+        List<String> imageUrls = androidUtil.getImageUrls();
+        if (imageUrls != null && !imageUrls.isEmpty()) {
+            String firstImageUrl = imageUrls.get(0);
+            Log.d("ImageUrl", "URL: " + firstImageUrl); // Cetak URL gambar ke logcat
+            Glide.with(context).load(firstImageUrl).into(holder.recyclerImage);
+        }
         holder.recyclerNamaKos.setText(dataList.get(position).getNamaKos());
     }
 

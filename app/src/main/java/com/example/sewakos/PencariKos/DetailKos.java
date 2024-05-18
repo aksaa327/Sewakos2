@@ -10,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.sewakos.AndroidUtil;
 import com.example.sewakos.R;
 import com.google.firebase.database.DataSnapshot;
@@ -18,18 +21,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetailKos extends AppCompatActivity {
 
-    private ImageView detailImage;
+    private ImageSlider imageSlider;
     private TextView detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
-    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_kos);
 
-        detailImage = findViewById(R.id.image_detail_kos);
+        imageSlider = findViewById(R.id.image_slider);
         detailNamaKos = findViewById(R.id.nama_kos_detail_kos);
         detailCatatanAlamatKos = findViewById(R.id.catatanAlamatKos);
         detailDeskripsiKos = findViewById(R.id.deskripsiKos);
@@ -37,6 +42,8 @@ public class DetailKos extends AppCompatActivity {
         detailHargaKos = findViewById(R.id.hargaKos);
         detailKetersediaanKamarKos = findViewById(R.id.ketersediaanKamarKos);
         detailTipeKos = findViewById(R.id.tipeKos);
+
+        //imageSlider.setImageList(imageList);
 
         String kosId = getIntent().getStringExtra("kosId");
         String userId = getIntent().getStringExtra("userId");
@@ -57,8 +64,19 @@ public class DetailKos extends AppCompatActivity {
                 if (snapshot.exists()) {
                     AndroidUtil kos = snapshot.getValue(AndroidUtil.class);
                     if (kos != null) {
-                        Log.d("DetailKosActivity", "Kos Details: " + kos.getNamaKos()); // Tambahkan log ini
-                        Glide.with(DetailKos.this).load(kos.getImageURL()).into(detailImage);
+                        Log.d("DetailKosActivity", "Kos Details: " + kos.getNamaKos());
+
+                        List<SlideModel> slideModels = new ArrayList<>();
+                        List<String> imageUrls = kos.getImageUrls(); // Mengambil daftar URL gambar
+                        if (imageUrls != null && !imageUrls.isEmpty()) {
+                            for (String imageUrl : imageUrls) {
+                                slideModels.add(new SlideModel(imageUrl, ScaleTypes.CENTER_CROP));
+                            }
+                            imageSlider.setImageList(slideModels);
+                        } else {
+                            Log.d("DetailKosActivity", "Image URLs are null or empty");
+                        }
+
                         detailNamaKos.setText(kos.getNamaKos());
                         detailCatatanAlamatKos.setText(kos.getCatatanAlamatKos());
                         detailDeskripsiKos.setText(kos.getDeskripsiKos());
@@ -78,6 +96,5 @@ public class DetailKos extends AppCompatActivity {
                 Toast.makeText(DetailKos.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

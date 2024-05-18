@@ -72,17 +72,24 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
+                android:layout_height="290dp"
                 android:elevation="4dp"
                 android:background="@drawable/rectangle_2_shape"
                 >
 
                 <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
                     android:id="@+id/upload_image_kos"
+                    android:src="@drawable/camera"
+                    />
+
+                <com.denzcoskun.imageslider.ImageSlider
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/camera" />
+                    android:id="@+id/image_slider"
+                    android:layout_centerInParent="true"/>
 
             </RelativeLayout>
 

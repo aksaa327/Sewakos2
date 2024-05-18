@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AndroidUtil implements Parcelable {
 
     private String id;
@@ -29,6 +32,7 @@ public class AndroidUtil implements Parcelable {
     private String fasilitasKos;
     private String tipeKos;
     private Integer ketersediaanKamarKos, hargaKos;
+    private List<String> imageUrls;
 
     public String getImageURL() {
         return imageURL;
@@ -102,12 +106,20 @@ public class AndroidUtil implements Parcelable {
         this.hargaKos = hargaKos;
     }
 
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
     public AndroidUtil() {
         // Default constructor required for calls to DataSnapshot.getValue(AndroidUtil.class)
     }
 
-    public AndroidUtil(String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, Integer ketersediaanKamarKos, Integer hargaKos) {
-        this.imageURL = imageURL;
+    public AndroidUtil(List<String> imageUrls, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, Integer ketersediaanKamarKos, Integer hargaKos) {
+        this.imageUrls = imageUrls;
         this.namaKos = namaKos;
         this.deskripsiKos = deskripsiKos;
         this.catatanAlamatKos = catatanAlamatKos;
@@ -127,6 +139,7 @@ public class AndroidUtil implements Parcelable {
         ketersediaanKamarKos = in.readInt();
         namaKos = in.readString();
         tipeKos = in.readString();
+        imageUrls = in.createStringArrayList();
     }
 
     public static final Creator<AndroidUtil> CREATOR = new Creator<AndroidUtil>() {
@@ -156,6 +169,8 @@ public class AndroidUtil implements Parcelable {
         dest.writeInt(ketersediaanKamarKos);
         dest.writeString(namaKos);
         dest.writeString(tipeKos);
+        dest.writeString(userId);
+        dest.writeStringList(imageUrls);
     }
 
     public static void setProfilePic(Context context, Uri imageUri, ImageView imageView) {
