@@ -113,84 +113,12 @@
             android:layout_marginBottom="50dp">
 
             <RelativeLayout
-                android:id="@+id/btn_ubah_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                >
-
-                <View
-                    android:background="@drawable/bg_button_ubahpassword"
-                    android:layout_width="286dp"
-                    android:layout_height="47dp" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
-
-                    <TextView
-                        android:id="@+id/text_ubah_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ubah Password"
-                        android:fontFamily="@font/raleway_medium"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="7dp"
-                        android:layout_centerVertical="true"
-                        />
-                    <ImageView
-                        android:id="@+id/icon_lock"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/text_ubah_password"
-                        android:layout_marginStart="12dp"
-                        android:src="@drawable/lock"/>
-
-                </RelativeLayout>
-
-                <View
-                    android:background="@drawable/bg_button_ubahpassword"
-                    android:layout_width="286dp"
-                    android:layout_height="47dp" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true">
-
-                    <TextView
-                        android:id="@+id/txt_ubah_pass"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ubah Password"
-                        android:fontFamily="@font/inter_medium"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:layout_marginStart="7dp"
-                        android:layout_centerVertical="true"
-                        />
-                    <ImageView
-                        android:id="@+id/icon_logout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/txt_ubah_pass"
-                        android:layout_marginStart="12dp"
-                        android:src="@drawable/lock"/>
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/btn_loguot"
                 android:layout_width="286dp"
                 android:layout_height="47dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="28dp"
                 android:background="@drawable/bg_btn_logout"
-                android:layout_below="@+id/btn_ubah_password">
+                >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
-import com.example.sewakos.Communication.Pesan;
+import com.example.sewakos.Searching.Search;
 import com.example.sewakos.Profile.Profile;
 import com.example.sewakos.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,7 +17,7 @@ public class BottomNavbarPemilikKos extends AppCompatActivity implements Navigat
 
     private BottomNavigationView bottomNavigationView;
     private BerandaPemilikKos berandaPemilikKos = new BerandaPemilikKos();
-    private Pesan pesan = new Pesan();
+    private Search search = new Search();
     private Profile profile = new Profile();
 
     @SuppressLint("MissingInflatedId")
@@ -37,9 +36,6 @@ public class BottomNavbarPemilikKos extends AppCompatActivity implements Navigat
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.navBeranda) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, berandaPemilikKos).commit();
-            return true;
-        } else if (menuItem.getItemId() == R.id.navPesan) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, pesan).commit();
             return true;
         } else if (menuItem.getItemId() == R.id.navProfile) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profile).commit();

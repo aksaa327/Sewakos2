@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AndroidUtil implements Parcelable {
@@ -31,7 +30,8 @@ public class AndroidUtil implements Parcelable {
     private String catatanAlamatKos;
     private String fasilitasKos;
     private String tipeKos;
-    private Integer ketersediaanKamarKos, hargaKos;
+    private String hargaKos;
+    private Integer ketersediaanKamarKos;
     private List<String> imageUrls;
 
     public String getImageURL() {
@@ -98,11 +98,11 @@ public class AndroidUtil implements Parcelable {
         this.ketersediaanKamarKos = ketersediaanKamarKos;
     }
 
-    public Integer getHargaKos() {
+    public String getHargaKos() {
         return hargaKos;
     }
 
-    public void setHargaKos(Integer hargaKos) {
+    public void setHargaKos(String hargaKos) {
         this.hargaKos = hargaKos;
     }
 
@@ -118,7 +118,7 @@ public class AndroidUtil implements Parcelable {
         // Default constructor required for calls to DataSnapshot.getValue(AndroidUtil.class)
     }
 
-    public AndroidUtil(List<String> imageUrls, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, Integer ketersediaanKamarKos, Integer hargaKos) {
+    public AndroidUtil(List<String> imageUrls, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, Integer ketersediaanKamarKos, String hargaKos, String id, String userId) {
         this.imageUrls = imageUrls;
         this.namaKos = namaKos;
         this.deskripsiKos = deskripsiKos;
@@ -127,6 +127,8 @@ public class AndroidUtil implements Parcelable {
         this.tipeKos = tipeKos;
         this.ketersediaanKamarKos = ketersediaanKamarKos;
         this.hargaKos = hargaKos;
+        this.id = id;
+        this.userId = userId;
     }
 
     protected AndroidUtil(Parcel in) {
@@ -134,7 +136,7 @@ public class AndroidUtil implements Parcelable {
         catatanAlamatKos = in.readString();
         deskripsiKos = in.readString();
         fasilitasKos = in.readString();
-        hargaKos = in.readInt();
+        hargaKos = in.readString();
         imageURL = in.readString();
         ketersediaanKamarKos = in.readInt();
         namaKos = in.readString();
@@ -164,7 +166,7 @@ public class AndroidUtil implements Parcelable {
         dest.writeString(catatanAlamatKos);
         dest.writeString(deskripsiKos);
         dest.writeString(fasilitasKos);
-        dest.writeInt(hargaKos);
+        dest.writeString(hargaKos);
         dest.writeString(imageURL);
         dest.writeInt(ketersediaanKamarKos);
         dest.writeString(namaKos);

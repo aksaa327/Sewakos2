@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.sewakos.Communication.Pesan;
+import com.example.sewakos.Searching.Search;
 import com.example.sewakos.Profile.Profile;
 import com.example.sewakos.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,7 +19,7 @@ public class BottomNavbarPencariKos extends AppCompatActivity implements Navigat
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
     private BerandaPencariKos berandaPencariKos = new BerandaPencariKos();
-    private Pesan pesan = new Pesan();
+    private Search search = new Search();
     private Profile profile = new Profile();
 
     @SuppressLint("MissingInflatedId")
@@ -39,7 +39,7 @@ public class BottomNavbarPencariKos extends AppCompatActivity implements Navigat
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, berandaPencariKos).commit();
             return true;
         } else if (menuItem.getItemId() == R.id.navPesan) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, pesan).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, search).commit();
             return true;
         } else if (menuItem.getItemId() == R.id.navProfile) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profile).commit();

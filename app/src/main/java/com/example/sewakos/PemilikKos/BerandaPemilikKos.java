@@ -69,6 +69,8 @@ public class BerandaPemilikKos extends Fragment {
                     for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                         AndroidUtil androidUtil = dataSnapshot.getValue(AndroidUtil.class);
                         if (androidUtil != null) {
+                            androidUtil.setId(dataSnapshot.getKey()); // Set the key as ID
+                            androidUtil.setUserId(userID); // Set user ID
                             dataList.add(androidUtil);
                         }
                     }

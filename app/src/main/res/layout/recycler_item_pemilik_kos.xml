@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.5"/>
 
     <ImageView
-        android:id="@+id/trashIcon"
+        android:id="@+id/btnDeleteKos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"

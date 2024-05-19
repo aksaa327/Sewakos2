@@ -7,11 +7,40 @@
     android:background="@color/color_1"
     tools:context=".PencariKos.BerandaPencariKos">
 
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/rectangle_4_shape"
+        >
+
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/archivo_black"
+            android:text="@string/beranda"
+            android:textSize="28sp" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerViewPencariKos"
         android:scrollbars="vertical"
+        android:layout_below="@+id/top"
         />
 
 </LinearLayout>

@@ -153,7 +153,6 @@ public class UploadKos extends AppCompatActivity {
         String ketersediaanKamar = upload_ketersediaan_kamar.getText().toString();
         String hargaKos = upload_harga_kos.getText().toString();
         Integer ketersediaanKamarInteger = Integer.parseInt(ketersediaanKamar);
-        Integer hargaKosInteger = Integer.parseInt(hargaKos);
         int selectedRadioButtonId = upload_tipe_kos.getCheckedRadioButtonId();
 
         String tipeKos;
@@ -180,8 +179,9 @@ public class UploadKos extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             imageUrls.add(uri.toString());
+                            String kosId = databaseReference.push().getKey();
                             if (imageUrls.size() == selectedUris.size()) {
-                                AndroidUtil androidUtil = new AndroidUtil(imageUrls, namaKos, deskripsiKos, catatanAlamatKos, fasilitasKos, tipeKos, ketersediaanKamarInteger, hargaKosInteger);
+                                AndroidUtil androidUtil = new AndroidUtil(imageUrls, namaKos, deskripsiKos, catatanAlamatKos, fasilitasKos, tipeKos, ketersediaanKamarInteger, hargaKos, kosId, userID);
                                 databaseReference.child(userID).child(key).setValue(androidUtil);
 
                                 // Hide ProgressDialog when upload is complete
