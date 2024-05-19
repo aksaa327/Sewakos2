@@ -70,28 +70,33 @@
             android:layout_marginStart="12dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="290dp"
-                android:elevation="4dp"
-                android:background="@drawable/rectangle_2_shape"
+                android:layout_height="300dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="10dp"
                 >
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
-                    android:id="@+id/upload_image_kos"
-                    android:src="@drawable/camera"
-                    />
-
-                <com.denzcoskun.imageslider.ImageSlider
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/image_slider"
-                    android:layout_centerInParent="true"/>
+                    android:layout_height="match_parent">
 
-            </RelativeLayout>
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/image_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:id="@+id/upload_image_kos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/camera"
+                        android:layout_centerInParent="true"
+                        android:padding="60dp"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,7 +126,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="25dp"
                 >
@@ -136,7 +141,7 @@
                 <EditText
                     android:id="@+id/upload_deskripsi_kos"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:background="@drawable/rectangle_2_shape"
                     android:fontFamily="@font/inter_regular"
                     android:inputType="textMultiLine"
@@ -217,12 +222,7 @@
                     android:fontFamily="@font/inter_regular"
                     />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_extralight"
-                    android:text="@string/buka_peta_dan_posisikan" />
+
 
                 <Button
                     android:id="@+id/btn_maps"
@@ -291,7 +291,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="25dp">
 
@@ -305,7 +305,7 @@
                 <EditText
                     android:id="@+id/upload_fasilitas_kos"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:background="@drawable/rectangle_2_shape"
                     android:fontFamily="@font/inter_regular"
                     android:inputType="textMultiLine"
@@ -317,7 +317,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="25dp">
@@ -332,10 +332,10 @@
                 <EditText
                     android:id="@+id/upload_harga_kos"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="100dp"
                     android:background="@drawable/rectangle_2_shape"
                     android:fontFamily="@font/inter_regular"
-                    android:inputType="number"
+                    android:inputType="textMultiLine"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
                     android:hint="atur harga kos anda" />
@@ -361,6 +361,13 @@
             android:layout_marginVertical="5dp"
             android:layout_marginStart="100dp"
             android:text="@string/tambahkan" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

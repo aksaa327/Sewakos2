@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -46,10 +47,10 @@ public class UploadKos extends AppCompatActivity {
             ,upload_fasilitas_kos, upload_harga_kos;
     private RadioGroup upload_tipe_kos;
     private Button btn_upload_kos;
-    private Uri imageUri;
     private List<Uri> selectedUris = new ArrayList<>();
     private List<SlideModel> slideModels = new ArrayList<>();
     private List<String> imageUrls = new ArrayList<>();
+    private ProgressDialog progressDialog;
     final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("List Kos");
     final private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -107,6 +108,11 @@ public class UploadKos extends AppCompatActivity {
         upload_harga_kos = findViewById(R.id.upload_harga_kos);
         upload_tipe_kos = findViewById(R.id.upload_tipe_kos);
 
+        // Initialize ProgressDialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Uploading...");
+        progressDialog.setCancelable(false);
+
         upload_image_kos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +120,7 @@ public class UploadKos extends AppCompatActivity {
                 photoPicker.setAction(Intent.ACTION_OPEN_DOCUMENT);
                 photoPicker.setType("*/*");
                 photoPicker.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                String[] mimeTypes = {"image/*", "video/*"};
+                String[] mimeTypes = {"image/*"};
                 photoPicker.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
                 activityResultLauncher.launch(photoPicker);
             }
@@ -123,6 +129,7 @@ public class UploadKos extends AppCompatActivity {
         btn_upload_kos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 if (!selectedUris.isEmpty()) {
                     for (Uri uri : selectedUris) {
                         uploadToFirebase();
@@ -177,6 +184,9 @@ public class UploadKos extends AppCompatActivity {
                                 AndroidUtil androidUtil = new AndroidUtil(imageUrls, namaKos, deskripsiKos, catatanAlamatKos, fasilitasKos, tipeKos, ketersediaanKamarInteger, hargaKosInteger);
                                 databaseReference.child(userID).child(key).setValue(androidUtil);
 
+                                // Hide ProgressDialog when upload is complete
+                                progressDialog.dismiss();
+
                                 Toast.makeText(UploadKos.this, "Uploaded", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(UploadKos.this, BerandaPemilikKos.class);
                                 startActivity(intent);
@@ -186,6 +196,7 @@ public class UploadKos extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
                             Toast.makeText(UploadKos.this, "Failed to get URL", Toast.LENGTH_SHORT).show();
                         }
                     });

@@ -60,21 +60,19 @@
             android:layout_marginStart="12dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/rectangle_3_shape">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
 
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/image_slider"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:iss_auto_cycle="true"
-                    app:iss_period="1000"
-                    app:iss_delay="1000"
                     app:iss_text_align="CENTER"/>
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -141,10 +139,19 @@
                 android:fontFamily="@font/inter_regular"
                 android:textSize="12sp"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipe Kos"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/inter_semibold"
+                android:textSize="15sp"
+                />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rectangle_3_shape">
 
                 <TextView
