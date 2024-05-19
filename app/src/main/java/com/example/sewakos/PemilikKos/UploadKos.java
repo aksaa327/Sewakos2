@@ -129,17 +129,68 @@ public class UploadKos extends AppCompatActivity {
         btn_upload_kos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.show();
-                if (!selectedUris.isEmpty()) {
-                    for (Uri uri : selectedUris) {
-                        uploadToFirebase();
+                // Validate input fields
+                if (validateInputs()) {
+                    progressDialog.show();
+                    if (!selectedUris.isEmpty()) {
+                        for (Uri uri : selectedUris) {
+                            uploadToFirebase();
+                        }
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(UploadKos.this, "Please Select image", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(UploadKos.this, "Please Select image", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+    }
+
+    private boolean validateInputs() {
+        String namaKos = upload_nama_kos.getText().toString().trim();
+        String deskripsiKos = upload_deskripsi_kos.getText().toString().trim();
+        String catatanAlamatKos = upload_catatan_alamat_kos.getText().toString().trim();
+        String fasilitasKos = upload_fasilitas_kos.getText().toString().trim();
+        String ketersediaanKamar = upload_ketersediaan_kamar.getText().toString().trim();
+        String hargaKos = upload_harga_kos.getText().toString().trim();
+        int selectedRadioButtonId = upload_tipe_kos.getCheckedRadioButtonId();
+
+        if (namaKos.isEmpty()) {
+            upload_nama_kos.setError("Nama kos tidak boleh kosong");
+            return false;
+        }
+
+        if (deskripsiKos.isEmpty()) {
+            upload_deskripsi_kos.setError("Deskripsi kos tidak boleh kosong");
+            return false;
+        }
+
+        if (catatanAlamatKos.isEmpty()) {
+            upload_catatan_alamat_kos.setError("Alamat kos tidak boleh kosong");
+            return false;
+        }
+
+        if (fasilitasKos.isEmpty()) {
+            upload_fasilitas_kos.setError("Fasilitas kos tidak boleh kosong");
+            return false;
+        }
+
+        if (ketersediaanKamar.isEmpty()) {
+            upload_ketersediaan_kamar.setError("Ketersediaan kamar tidak boleh kosong");
+            return false;
+        }
+
+        if (hargaKos.isEmpty()) {
+            upload_harga_kos.setError("Harga kos tidak boleh kosong");
+            return false;
+        }
+
+        if (selectedRadioButtonId == -1) {
+            Toast.makeText(this, "Pilih tipe kos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     private void uploadToFirebase() {

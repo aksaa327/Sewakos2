@@ -53,6 +53,17 @@ public class Login extends AppCompatActivity {
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
+                // Validasi email dan password
+                if (email.isEmpty()) {
+                    etEmail.setError("Email tidak boleh kosong");
+                    return;
+                }
+
+                if (password.isEmpty()) {
+                    etPassword.setError("Password tidak boleh kosong");
+                    return;
+                }
+
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
