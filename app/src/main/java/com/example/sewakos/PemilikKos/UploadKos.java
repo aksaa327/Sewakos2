@@ -25,6 +25,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.example.sewakos.AndroidUtil;
+import com.example.sewakos.Autentication.Register;
 import com.example.sewakos.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +43,7 @@ import java.util.List;
 public class UploadKos extends AppCompatActivity {
 
     private ImageSlider imageSlider;
-    private ImageView upload_image_kos;
+    private ImageView upload_image_kos, back_to_beranda;
     EditText upload_nama_kos, upload_deskripsi_kos, upload_catatan_alamat_kos, upload_ketersediaan_kamar
             ,upload_fasilitas_kos, upload_harga_kos;
     private RadioGroup upload_tipe_kos;
@@ -108,6 +109,8 @@ public class UploadKos extends AppCompatActivity {
         upload_harga_kos = findViewById(R.id.upload_harga_kos);
         upload_tipe_kos = findViewById(R.id.upload_tipe_kos);
 
+        back_to_beranda = findViewById(R.id.back_to_beranda);
+
         // Initialize ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
@@ -141,6 +144,13 @@ public class UploadKos extends AppCompatActivity {
                         Toast.makeText(UploadKos.this, "Please Select image", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        back_to_beranda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BerandaPemilikKos.class));
             }
         });
 

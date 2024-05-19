@@ -3,8 +3,10 @@ package com.example.sewakos.PencariKos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.sewakos.AndroidUtil;
+import com.example.sewakos.PemilikKos.BerandaPemilikKos;
 import com.example.sewakos.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +30,7 @@ import java.util.List;
 public class DetailKos extends AppCompatActivity {
 
     private ImageSlider imageSlider;
+    private ImageView btn_back_to_beranda;
     private TextView detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
 
     @Override
@@ -42,6 +46,15 @@ public class DetailKos extends AppCompatActivity {
         detailHargaKos = findViewById(R.id.hargaKos);
         detailKetersediaanKamarKos = findViewById(R.id.ketersediaanKamarKos);
         detailTipeKos = findViewById(R.id.tipeKos);
+
+        btn_back_to_beranda = findViewById(R.id.btn_back_to_beranda);
+
+        btn_back_to_beranda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BerandaPencariKos.class));
+            }
+        });
 
         //imageSlider.setImageList(imageList);
 
