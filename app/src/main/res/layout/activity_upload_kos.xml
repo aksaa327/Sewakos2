@@ -222,8 +222,6 @@
                     android:fontFamily="@font/inter_regular"
                     />
 
-
-
                 <Button
                     android:id="@+id/btn_maps"
                     android:layout_width="220dp"
