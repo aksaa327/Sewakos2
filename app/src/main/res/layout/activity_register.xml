@@ -211,7 +211,7 @@
                 android:id="@+id/text_sudah_punya_akun_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sudah_punya_akun"
+                android:text="Sudah Punya Akun?"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:fontFamily="@font/inter_regular"/>
@@ -224,6 +224,7 @@
                 android:text="Login"
                 android:textColor="@color/color_4"
                 android:textSize="12sp"
+                android:layout_marginStart="5dp"
                 android:fontFamily="@font/inter_regular"/>
 
         </RelativeLayout>

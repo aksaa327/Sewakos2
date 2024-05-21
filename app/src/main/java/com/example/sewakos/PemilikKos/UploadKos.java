@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -27,6 +28,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.example.sewakos.AndroidUtil;
 import com.example.sewakos.Autentication.Register;
 import com.example.sewakos.R;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +47,9 @@ import java.util.List;
 
 public class UploadKos extends AppCompatActivity {
 
+    private static final int REQUEST_CODE_SELECT_LOCATION = 1;
+    private LatLng selectedLocation;
+
     private ImageSlider imageSlider;
     private ImageView upload_image_kos, back_to_beranda;
     EditText upload_nama_kos, upload_deskripsi_kos, upload_catatan_alamat_kos, upload_ketersediaan_kamar
@@ -55,6 +60,8 @@ public class UploadKos extends AppCompatActivity {
     private List<SlideModel> slideModels = new ArrayList<>();
     private List<String> imageUrls = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private Button btnSelectLocation;
+    private TextView tvSelectedLocation;
     final private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("List Kos");
     final private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -111,10 +118,10 @@ public class UploadKos extends AppCompatActivity {
         upload_fasilitas_kos = findViewById(R.id.upload_fasilitas_kos);
         upload_harga_kos = findViewById(R.id.upload_harga_kos);
         upload_tipe_kos = findViewById(R.id.upload_tipe_kos);
-
+        btnSelectLocation = findViewById(R.id.btn_select_location);
+        tvSelectedLocation = findViewById(R.id.tv_selected_location);
         back_to_beranda = findViewById(R.id.back_to_beranda);
 
-        // Initialize ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
         progressDialog.setCancelable(false);
@@ -157,6 +164,28 @@ public class UploadKos extends AppCompatActivity {
             }
         });
 
+        btnSelectLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UploadKos.this, SelectLocation.class);
+                startActivityForResult(intent, REQUEST_CODE_SELECT_LOCATION);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SELECT_LOCATION && resultCode == RESULT_OK) {
+            if (data != null) {
+                selectedLocation = data.getParcelableExtra("selected_location");
+                if (selectedLocation != null) {
+                    String locationText = "Selected Location: " + selectedLocation.latitude + ", " + selectedLocation.longitude;
+                    tvSelectedLocation.setText(locationText);
+                }
+            }
+        }
     }
 
     private boolean validateInputs() {
@@ -268,7 +297,9 @@ public class UploadKos extends AppCompatActivity {
                                                     username,
                                                     profileImageUrl,
                                                     ketersediaanKamarInteger,
-                                                    imageUrls
+                                                    imageUrls,
+                                                    selectedLocation.latitude,
+                                                    selectedLocation.longitude
                                             );
                                             databaseReference.child(userID).child(key).setValue(androidUtil);
 

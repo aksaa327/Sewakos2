@@ -33,8 +33,26 @@ public class AndroidUtil implements Parcelable {
     private String hargaKos;
     private String username;
     private String profileImageUrl;
+    private double latitude;
+    private double longitude;
 
-    public AndroidUtil(String id, String userId, String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, String hargaKos, String username, String profileImageUrl, Integer ketersediaanKamarKos, List<String> imageUrls) {
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public AndroidUtil(String id, String userId, String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, String hargaKos, String username, String profileImageUrl, Integer ketersediaanKamarKos, List<String> imageUrls, double latitude, double longitude) {
         this.id = id;
         this.userId = userId;
         this.imageURL = imageURL;
@@ -48,6 +66,8 @@ public class AndroidUtil implements Parcelable {
         this.profileImageUrl = profileImageUrl;
         this.ketersediaanKamarKos = ketersediaanKamarKos;
         this.imageUrls = imageUrls;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getUsername() {

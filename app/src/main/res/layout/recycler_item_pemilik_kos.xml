@@ -34,7 +34,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:fontFamily="@font/inter_regular"
+        android:fontFamily="@font/inter_semibold"
         android:text="@string/nama_kos"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/cardViewImage"

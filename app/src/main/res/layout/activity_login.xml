@@ -123,7 +123,7 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/inter_regular"
-                android:text="belum punya akun?"
+                android:text="Belum Punya Akun?"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -134,7 +134,7 @@
                 android:layout_marginStart="3dp"
                 android:layout_toEndOf="@+id/text_belum_punya_akun"
                 android:fontFamily="@font/inter_regular"
-                android:text="daftar"
+                android:text="Daftar"
                 android:textColor="#1195AD"
                 android:textSize="12sp" />
 

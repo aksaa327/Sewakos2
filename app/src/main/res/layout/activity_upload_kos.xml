@@ -120,7 +120,7 @@
                     android:inputType="text"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
-                    android:hint="@string/isi_nama_kos_anda" />
+                    android:hint="Isi Nama Kos Anda" />
 
             </LinearLayout>
 
@@ -147,7 +147,7 @@
                     android:inputType="textMultiLine"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
-                    android:hint="@string/isi_deskripsi_kos_anda" />
+                    android:hint="Isi Deskripsi Kos Anda Sedetail Mungkin" />
 
             </LinearLayout>
 
@@ -223,7 +223,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btn_maps"
+                    android:id="@+id/btn_select_location"
                     android:layout_width="220dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
@@ -231,6 +231,12 @@
                     android:background="@drawable/btn_buka_peta_background"
                     android:text="@string/buka_peta"
                     android:textColor="#00FF29"/>
+
+                <TextView
+                    android:id="@+id/tv_selected_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selected Location: " />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -255,7 +261,7 @@
                         android:inputType="textMultiLine"
                         android:elevation="4dp"
                         android:paddingHorizontal="10dp"
-                        android:hint="deskripsi patokan agar kos mudah di temukan" />
+                        android:hint="Deskripsikan Alamat Kos Anda dengan Detail" />
 
                 </LinearLayout>
                 
@@ -283,7 +289,7 @@
                     android:inputType="number"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
-                    android:hint="@string/atur_jumlah_kamar_yang_tersedia" />
+                    android:hint="Berapa Kamar yang Tersedia" />
 
             </LinearLayout>
 
@@ -309,7 +315,7 @@
                     android:inputType="textMultiLine"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
-                    android:hint="atur fasilitas kos anda" />
+                    android:hint="Masukkan Fasilitas Kos Anda dengan Detail" />
 
             </LinearLayout>
 
@@ -336,7 +342,8 @@
                     android:inputType="textMultiLine"
                     android:elevation="4dp"
                     android:paddingHorizontal="10dp"
-                    android:hint="atur harga kos anda" />
+                    android:hint="Masukkan Harga Kos / (Bulan atau Tahun)
+                                  Contoh : Rp.700.000 / Bulan" />
 
             </LinearLayout>
 

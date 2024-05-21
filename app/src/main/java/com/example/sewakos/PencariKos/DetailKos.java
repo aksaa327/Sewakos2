@@ -19,6 +19,12 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.sewakos.AndroidUtil;
 import com.example.sewakos.PemilikKos.BerandaPemilikKos;
 import com.example.sewakos.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,8 +64,6 @@ public class DetailKos extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), BerandaPencariKos.class));
             }
         });
-
-        //imageSlider.setImageList(imageList);
 
         String kosId = getIntent().getStringExtra("kosId");
         String userId = getIntent().getStringExtra("userId");
@@ -109,6 +113,8 @@ public class DetailKos extends AppCompatActivity {
                                     .apply(RequestOptions.circleCropTransform())
                                     .into(profileImageView);
                         }
+
+                        initializeMap(kos.getLatitude(), kos.getLongitude(), kos.getNamaKos());
                     } else {
                         Log.d("DetailKosActivity", "Kos is null");
                     }
@@ -121,5 +127,19 @@ public class DetailKos extends AppCompatActivity {
                 Toast.makeText(DetailKos.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void initializeMap(double latitude, double longitude, String namaKos) {
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.detail_map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(GoogleMap googleMap) {
+                    LatLng location = new LatLng(latitude, longitude);
+                    googleMap.addMarker(new MarkerOptions().position(location).title(namaKos));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+                }
+            });
+        }
     }
 }

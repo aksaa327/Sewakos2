@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SewaKos"
         tools:targetApi="31">
+        <activity
+            android:name=".PemilikKos.SelectLocation"
+            android:exported="false" />
         <activity
             android:name=".PencariKos.DetailKos"
             android:exported="false" />
@@ -45,6 +51,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBZfiCp-jCdkowx1UI7gq9yQ2X8RuOJCWo" />
     </application>
 
 </manifest>
