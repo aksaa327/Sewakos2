@@ -74,6 +74,44 @@
 
             </androidx.cardview.widget.CardView>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_picture" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:hint="@string/memuat"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="17sp"
+                    android:layout_toEndOf="@+id/profile_image"
+                    android:layout_marginStart="13dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Pemilik"
+                    android:fontFamily="@font/inter_medium"
+                    android:textSize="12sp"
+                    android:layout_toEndOf="@+id/profile_image"
+                    android:layout_marginStart="13dp"
+                    android:layout_below="@+id/username"
+                    />
+
+            </RelativeLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

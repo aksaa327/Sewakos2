@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -30,14 +31,16 @@ import java.util.List;
 public class DetailKos extends AppCompatActivity {
 
     private ImageSlider imageSlider;
-    private ImageView btn_back_to_beranda;
-    private TextView detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
+    private ImageView btn_back_to_beranda, profileImageView;
+    private TextView username, detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_kos);
 
+        profileImageView = findViewById(R.id.profile_image);
+        username = findViewById(R.id.username);
         imageSlider = findViewById(R.id.image_slider);
         detailNamaKos = findViewById(R.id.nama_kos_detail_kos);
         detailCatatanAlamatKos = findViewById(R.id.catatanAlamatKos);
@@ -97,6 +100,15 @@ public class DetailKos extends AppCompatActivity {
                         detailHargaKos.setText(String.valueOf(kos.getHargaKos()));
                         detailKetersediaanKamarKos.setText(String.valueOf(kos.getKetersediaanKamarKos()));
                         detailTipeKos.setText(kos.getTipeKos());
+                        username.setText(kos.getUsername());
+
+                        String profileImageUrl = kos.getProfileImageUrl();
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                            Glide.with(DetailKos.this)
+                                    .load(profileImageUrl)
+                                    .apply(RequestOptions.circleCropTransform())
+                                    .into(profileImageView);
+                        }
                     } else {
                         Log.d("DetailKosActivity", "Kos is null");
                     }

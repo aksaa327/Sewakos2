@@ -31,8 +31,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -231,44 +234,80 @@ public class UploadKos extends AppCompatActivity {
         final StorageReference folderReference = storageReference.child(folderName);
         final String key = databaseReference.child(userID).push().getKey();
 
-        for (Uri uri : selectedUris) {
-            final StorageReference imageReference = folderReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
-            imageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            imageUrls.add(uri.toString());
-                            String kosId = databaseReference.push().getKey();
-                            if (imageUrls.size() == selectedUris.size()) {
-                                AndroidUtil androidUtil = new AndroidUtil(imageUrls, namaKos, deskripsiKos, catatanAlamatKos, fasilitasKos, tipeKos, ketersediaanKamarInteger, hargaKos, kosId, userID);
-                                databaseReference.child(userID).child(key).setValue(androidUtil);
+        // Ambil informasi pengguna
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String username = snapshot.child("username").getValue(String.class);
+                    String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                                // Hide ProgressDialog when upload is complete
-                                progressDialog.dismiss();
+                    // Upload images to Firebase Storage
+                    for (Uri uri : selectedUris) {
+                        final StorageReference imageReference = folderReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+                        imageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        imageUrls.add(uri.toString());
+                                        if (imageUrls.size() == selectedUris.size()) {
+                                            // Buat objek AndroidUtil dengan informasi tambahan
+                                            AndroidUtil androidUtil = new AndroidUtil(
+                                                    key,
+                                                    userID,
+                                                    uri.toString(),
+                                                    namaKos,
+                                                    deskripsiKos,
+                                                    catatanAlamatKos,
+                                                    fasilitasKos,
+                                                    tipeKos,
+                                                    hargaKos,
+                                                    username,
+                                                    profileImageUrl,
+                                                    ketersediaanKamarInteger,
+                                                    imageUrls
+                                            );
+                                            databaseReference.child(userID).child(key).setValue(androidUtil);
 
-                                Toast.makeText(UploadKos.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(UploadKos.this, BerandaPemilikKos.class);
-                                startActivity(intent);
-                                finish();
+                                            // Hide ProgressDialog when upload is complete
+                                            progressDialog.dismiss();
+
+                                            Toast.makeText(UploadKos.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(UploadKos.this, BerandaPemilikKos.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(UploadKos.this, "Failed to get URL", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(UploadKos.this, "Failed to get URL", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(UploadKos.this, "Failed to upload", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(UploadKos.this, "Failed to get user info", Toast.LENGTH_SHORT).show();
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(UploadKos.this, "Failed to upload", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressDialog.dismiss();
+                Toast.makeText(UploadKos.this, "Failed to get user info", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private String getFileExtension(Uri fileUri) {

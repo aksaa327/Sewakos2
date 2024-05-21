@@ -154,7 +154,7 @@ public class Profile extends Fragment {
                         if (profileImageUrl != null) {
                             Glide.with(requireContext())
                                     .load(profileImageUrl)
-                                    .apply(new RequestOptions().circleCrop()) // Menggunakan Glide untuk memuat gambar sebagai lingkaran
+                                    .apply(new RequestOptions().circleCrop())
                                     .into(imageProfile);
                         }
                     } else {

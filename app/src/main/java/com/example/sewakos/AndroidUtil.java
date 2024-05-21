@@ -31,6 +31,41 @@ public class AndroidUtil implements Parcelable {
     private String fasilitasKos;
     private String tipeKos;
     private String hargaKos;
+    private String username;
+    private String profileImageUrl;
+
+    public AndroidUtil(String id, String userId, String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, String hargaKos, String username, String profileImageUrl, Integer ketersediaanKamarKos, List<String> imageUrls) {
+        this.id = id;
+        this.userId = userId;
+        this.imageURL = imageURL;
+        this.namaKos = namaKos;
+        this.deskripsiKos = deskripsiKos;
+        this.catatanAlamatKos = catatanAlamatKos;
+        this.fasilitasKos = fasilitasKos;
+        this.tipeKos = tipeKos;
+        this.hargaKos = hargaKos;
+        this.username = username;
+        this.profileImageUrl = profileImageUrl;
+        this.ketersediaanKamarKos = ketersediaanKamarKos;
+        this.imageUrls = imageUrls;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
     private Integer ketersediaanKamarKos;
     private List<String> imageUrls;
 
