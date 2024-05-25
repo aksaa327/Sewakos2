@@ -35,12 +35,69 @@
 
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerViewPencariKos"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/top"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:id="@+id/terdekatText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terdekat"
+            android:layout_marginStart="8dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="15dp"
+            />
+
+        <TextView
+            android:id="@+id/tvNoKosTerdekat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak ada kos terdekat"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:fontFamily="@font/archivo_black"
+            android:layout_below="@+id/terdekatText"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewKosTerdekat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/terdekatText"
+            tools:listitem="@layout/item_kos_horizontal" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/list_semua_kos_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua Kos"
+            android:textSize="18sp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginTop="15dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerViewPencariKos"
+            android:scrollbars="vertical"
+            android:layout_below="@+id/list_semua_kos_text"
+            android:layout_marginTop="8dp"
+            />
+
+    </RelativeLayout>
 
 </LinearLayout>

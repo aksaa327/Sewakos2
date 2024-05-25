@@ -35,6 +35,15 @@ public class AndroidUtil implements Parcelable {
     private String profileImageUrl;
     private double latitude;
     private double longitude;
+    private double distance;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 
     public double getLatitude() {
         return latitude;

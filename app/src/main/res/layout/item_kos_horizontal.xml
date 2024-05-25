@@ -1,0 +1,56 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="224dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/imageKos"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_bed" />
+
+        <TextView
+            android:id="@+id/namaKos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageKos"
+            android:fontFamily="@font/inter_semibold"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/memuat"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/alamatKos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/namaKos"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/memuat"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/jarakKos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alamatKos"
+            android:text="@string/memuat"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
