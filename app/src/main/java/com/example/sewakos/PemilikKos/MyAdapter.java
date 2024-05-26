@@ -61,13 +61,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             String kosId = androidUtil.getId();
 
             new AlertDialog.Builder(context)
-                    .setTitle("Delete Kos")
-                    .setMessage("Are you sure you want to delete this kos?")
+                    .setTitle("Hapus Kos")
+                    .setMessage("Apakah kamu yakin ingin menghapus kos ini?")
                     .setPositiveButton(android.R.string.yes, (dialog, which) -> {
                         databaseReference.child(userId).child(kosId).removeValue()
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(context, "Kos deleted successfully", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Kos berhasil dihapus", Toast.LENGTH_SHORT).show();
                                         new Handler().postDelayed(() -> {
                                             if (position >= 0 && position < dataList.size()) {
                                                 dataList.remove(position);
@@ -76,12 +76,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                                             }
                                         }, 500);
                                     } else {
-                                        Toast.makeText(context, "Failed to delete kos", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Gagal menghapus kos", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                                 .addOnFailureListener(e -> {
-                                    Log.e("Delete Kos", "Failed to delete kos", e);
-                                    Toast.makeText(context, "Failed to delete kos", Toast.LENGTH_SHORT).show();
+                                    Log.e("Delete Kos", "Gagal menghapus kos", e);
+                                    Toast.makeText(context, "Gagal menghapus kos", Toast.LENGTH_SHORT).show();
                                 });
                     })
                     .setNegativeButton(android.R.string.no, null)
