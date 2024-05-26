@@ -14,15 +14,6 @@ import java.util.List;
 public class AndroidUtil implements Parcelable {
 
     private String id;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     private String userId;
     private String imageURL;
     private String namaKos;
@@ -36,7 +27,25 @@ public class AndroidUtil implements Parcelable {
     private double latitude;
     private double longitude;
     private double distance;
+    private Integer ketersediaanKamarKos;
+    private List<String> imageUrls;
+    private String ownerPhoneNumber;
 
+    public String getOwnerPhoneNumber() {
+        return ownerPhoneNumber;
+    }
+
+    public void setOwnerPhoneNumber(String ownerPhoneNumber) {
+        this.ownerPhoneNumber = ownerPhoneNumber;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     public double getDistance() {
         return distance;
     }
@@ -61,7 +70,7 @@ public class AndroidUtil implements Parcelable {
         this.longitude = longitude;
     }
 
-    public AndroidUtil(String id, String userId, String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, String hargaKos, String username, String profileImageUrl, Integer ketersediaanKamarKos, List<String> imageUrls, double latitude, double longitude) {
+    public AndroidUtil(String id, String userId, String imageURL, String namaKos, String deskripsiKos, String catatanAlamatKos, String fasilitasKos, String tipeKos, String hargaKos, String username, String profileImageUrl, Integer ketersediaanKamarKos, List<String> imageUrls, double latitude, double longitude, String ownerPhoneNumber) {
         this.id = id;
         this.userId = userId;
         this.imageURL = imageURL;
@@ -77,6 +86,7 @@ public class AndroidUtil implements Parcelable {
         this.imageUrls = imageUrls;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.ownerPhoneNumber = ownerPhoneNumber;
     }
 
     public String getUsername() {
@@ -94,9 +104,6 @@ public class AndroidUtil implements Parcelable {
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
     }
-
-    private Integer ketersediaanKamarKos;
-    private List<String> imageUrls;
 
     public String getImageURL() {
         return imageURL;
@@ -206,6 +213,7 @@ public class AndroidUtil implements Parcelable {
         namaKos = in.readString();
         tipeKos = in.readString();
         imageUrls = in.createStringArrayList();
+        ownerPhoneNumber = in.readString();
     }
 
     public static final Creator<AndroidUtil> CREATOR = new Creator<AndroidUtil>() {
@@ -237,6 +245,7 @@ public class AndroidUtil implements Parcelable {
         dest.writeString(tipeKos);
         dest.writeString(userId);
         dest.writeStringList(imageUrls);
+        dest.writeString(ownerPhoneNumber);
     }
 
     public static void setProfilePic(Context context, Uri imageUri, ImageView imageView) {

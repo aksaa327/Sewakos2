@@ -29,10 +29,6 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.sewakos.R;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,12 +37,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class EditKos extends AppCompatActivity {
@@ -56,7 +50,7 @@ public class EditKos extends AppCompatActivity {
 
     private ImageSlider imageSlider;
     private ImageView upload_image_kos, back_to_beranda;
-    EditText edit_nama_kos, edit_deskripsi_kos, edit_catatan_alamat_kos, edit_ketersediaan_kamar, edit_fasilitas_kos, edit_harga_kos;
+    EditText edit_nama_kos, edit_deskripsi_kos, edit_catatan_alamat_kos, edit_ketersediaan_kamar, edit_fasilitas_kos, edit_harga_kos, edit_owner_phone_number;
     private RadioGroup edit_tipe_kos;
     private Button btn_update_kos;
     private List<Uri> selectedUris = new ArrayList<>();
@@ -126,6 +120,7 @@ public class EditKos extends AppCompatActivity {
         edit_fasilitas_kos = findViewById(R.id.edit_fasilitas_kos);
         edit_harga_kos = findViewById(R.id.edit_harga_kos);
         edit_tipe_kos = findViewById(R.id.edit_tipe_kos);
+        edit_owner_phone_number = findViewById(R.id.edit_owner_phone_number);
         btnSelectLocation = findViewById(R.id.btn_select_location);
         tvSelectedLocation = findViewById(R.id.tv_selected_location);
         back_to_beranda = findViewById(R.id.back_to_beranda);
@@ -222,6 +217,10 @@ public class EditKos extends AppCompatActivity {
             edit_harga_kos.setError("Harga kos tidak boleh kosong");
             return false;
         }
+        if (edit_owner_phone_number.getText().toString().trim().isEmpty()) {
+            edit_owner_phone_number.setError("Nomor telepon pemilik tidak boleh kosong");
+            return false;
+        }
         if (selectedLocation == null) {
             Toast.makeText(this, "Lokasi belum dipilih", Toast.LENGTH_SHORT).show();
             return false;
@@ -242,11 +241,12 @@ public class EditKos extends AppCompatActivity {
                     String deskripsiKos = snapshot.child("deskripsiKos").getValue(String.class);
                     String catatanAlamatKos = snapshot.child("catatanAlamatKos").getValue(String.class);
                     String fasilitasKos = snapshot.child("fasilitasKos").getValue(String.class);
-                    Integer ketersediaanKamarKos = snapshot.child("ketersediaanKamarKos").getValue(Integer.class);  // Pastikan tipe data integer
+                    Integer ketersediaanKamarKos = snapshot.child("ketersediaanKamarKos").getValue(Integer.class);
                     String hargaKos = snapshot.child("hargaKos").getValue(String.class);
                     String tipeKos = snapshot.child("tipeKos").getValue(String.class);
                     Double latitude = snapshot.child("latitude").getValue(Double.class);
                     Double longitude = snapshot.child("longitude").getValue(Double.class);
+                    String ownerPhoneNumber = snapshot.child("ownerPhoneNumber").getValue(String.class);
 
                     edit_nama_kos.setText(namaKos);
                     edit_deskripsi_kos.setText(deskripsiKos);
@@ -256,7 +256,11 @@ public class EditKos extends AppCompatActivity {
                         edit_ketersediaan_kamar.setText(String.valueOf(ketersediaanKamarKos));  // Konversi ke string untuk ditampilkan
                     }
                     edit_harga_kos.setText(hargaKos);
-
+                    if (ownerPhoneNumber != null) {
+                        edit_owner_phone_number.setText(ownerPhoneNumber); // Set nomor telepon pemilik
+                    } else {
+                        edit_owner_phone_number.setText(""); // Set kosong jika tidak ada nomor
+                    }
                     if (latitude != null && longitude != null) {
                         selectedLocation = new LatLng(latitude, longitude);
                         tvSelectedLocation.setText("Selected Location: " + latitude + ", " + longitude);
@@ -299,10 +303,11 @@ public class EditKos extends AppCompatActivity {
         String catatanAlamatKos = edit_catatan_alamat_kos.getText().toString().trim();
         String fasilitasKos = edit_fasilitas_kos.getText().toString().trim();
         String hargaKos = edit_harga_kos.getText().toString().trim();
+        String ownerPhoneNumber = edit_owner_phone_number.getText().toString().trim();
 
         int ketersediaanKamarKos;
         try {
-            ketersediaanKamarKos = Integer.parseInt(edit_ketersediaan_kamar.getText().toString().trim());  // Pastikan input diubah ke integer
+            ketersediaanKamarKos = Integer.parseInt(edit_ketersediaan_kamar.getText().toString().trim());
         } catch (NumberFormatException e) {
             edit_ketersediaan_kamar.setError("Ketersediaan kamar harus berupa angka");
             return;
@@ -318,6 +323,7 @@ public class EditKos extends AppCompatActivity {
         kosData.put("latitude", selectedLocation.latitude);
         kosData.put("longitude", selectedLocation.longitude);
         kosData.put("imageUrls", imageUrls);
+        kosData.put("ownerPhoneNumber", ownerPhoneNumber);
 
         int selectedId = edit_tipe_kos.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(selectedId);
@@ -343,11 +349,14 @@ public class EditKos extends AppCompatActivity {
 
     }
 
+    /*
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(contentResolver.getType(uri));
     }
+
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -362,6 +371,4 @@ public class EditKos extends AppCompatActivity {
             }
         }
     }
-
-
 }

@@ -322,7 +322,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="25dp">
 
                 <TextView
@@ -343,6 +342,33 @@
                     android:paddingHorizontal="10dp"
                     android:hint="Masukkan Harga Kos / (Bulan atau Tahun)
                                   Contoh : Rp.700.000 / Bulan" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_regular"
+                    android:paddingHorizontal="10dp"
+                    android:text="No WhatsApp"/>
+
+                <EditText
+                    android:id="@+id/edit_owner_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/rectangle_2_shape"
+                    android:fontFamily="@font/inter_regular"
+                    android:inputType="textMultiLine"
+                    android:elevation="4dp"
+                    android:paddingHorizontal="10dp"
+                    android:hint="Nomor WhatsApp Pemilik" />
 
             </LinearLayout>
 

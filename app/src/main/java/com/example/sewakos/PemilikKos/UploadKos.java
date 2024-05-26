@@ -53,7 +53,7 @@ public class UploadKos extends AppCompatActivity {
     private ImageSlider imageSlider;
     private ImageView upload_image_kos, back_to_beranda;
     EditText upload_nama_kos, upload_deskripsi_kos, upload_catatan_alamat_kos, upload_ketersediaan_kamar
-            ,upload_fasilitas_kos, upload_harga_kos;
+            ,upload_fasilitas_kos, upload_harga_kos, upload_owner_phone_number;
     private RadioGroup upload_tipe_kos;
     private Button btn_upload_kos;
     private List<Uri> selectedUris = new ArrayList<>();
@@ -118,6 +118,7 @@ public class UploadKos extends AppCompatActivity {
         upload_fasilitas_kos = findViewById(R.id.upload_fasilitas_kos);
         upload_harga_kos = findViewById(R.id.upload_harga_kos);
         upload_tipe_kos = findViewById(R.id.upload_tipe_kos);
+        upload_owner_phone_number = findViewById(R.id.upload_owner_phone_number);
         btnSelectLocation = findViewById(R.id.btn_select_location);
         tvSelectedLocation = findViewById(R.id.tv_selected_location);
         back_to_beranda = findViewById(R.id.back_to_beranda);
@@ -195,6 +196,7 @@ public class UploadKos extends AppCompatActivity {
         String fasilitasKos = upload_fasilitas_kos.getText().toString().trim();
         String ketersediaanKamar = upload_ketersediaan_kamar.getText().toString().trim();
         String hargaKos = upload_harga_kos.getText().toString().trim();
+        String ownerPhoneNumber = upload_owner_phone_number.getText().toString().trim();
         int selectedRadioButtonId = upload_tipe_kos.getCheckedRadioButtonId();
 
         if (namaKos.isEmpty()) {
@@ -227,6 +229,11 @@ public class UploadKos extends AppCompatActivity {
             return false;
         }
 
+        if (ownerPhoneNumber.isEmpty()) {
+            upload_owner_phone_number.setError("Nomor WhatsApp pemilik tidak boleh kosong");
+            return false;
+        }
+
         if (selectedRadioButtonId == -1) {
             Toast.makeText(this, "Pilih tipe kos", Toast.LENGTH_SHORT).show();
             return false;
@@ -245,6 +252,7 @@ public class UploadKos extends AppCompatActivity {
         String fasilitasKos = upload_fasilitas_kos.getText().toString();
         String ketersediaanKamar = upload_ketersediaan_kamar.getText().toString();
         String hargaKos = upload_harga_kos.getText().toString();
+        String ownerPhoneNumber = upload_owner_phone_number.getText().toString();
         Integer ketersediaanKamarInteger = Integer.parseInt(ketersediaanKamar);
         int selectedRadioButtonId = upload_tipe_kos.getCheckedRadioButtonId();
 
@@ -272,7 +280,6 @@ public class UploadKos extends AppCompatActivity {
                     String username = snapshot.child("username").getValue(String.class);
                     String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class);
 
-                    // Upload images to Firebase Storage
                     for (Uri uri : selectedUris) {
                         final StorageReference imageReference = folderReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
                         imageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -299,7 +306,8 @@ public class UploadKos extends AppCompatActivity {
                                                     ketersediaanKamarInteger,
                                                     imageUrls,
                                                     selectedLocation.latitude,
-                                                    selectedLocation.longitude
+                                                    selectedLocation.longitude,
+                                                    ownerPhoneNumber
                                             );
                                             databaseReference.child(userID).child(key).setValue(androidUtil);
 

@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,8 @@ public class DetailKos extends AppCompatActivity {
     private ImageView btn_back_to_beranda, profileImageView;
     private TextView username, detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
 
+    private Button btn_hubungi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class DetailKos extends AppCompatActivity {
         detailHargaKos = findViewById(R.id.hargaKos);
         detailKetersediaanKamarKos = findViewById(R.id.ketersediaanKamarKos);
         detailTipeKos = findViewById(R.id.tipeKos);
+        btn_hubungi = findViewById(R.id.btn_hubungi);
 
         btn_back_to_beranda = findViewById(R.id.btn_back_to_beranda);
 
@@ -115,6 +120,19 @@ public class DetailKos extends AppCompatActivity {
                         }
 
                         initializeMap(kos.getLatitude(), kos.getLongitude(), kos.getNamaKos());
+
+                        String ownerPhoneNumber = kos.getOwnerPhoneNumber(); // Ambil nomor telepon pemilik
+                        btn_hubungi.setVisibility(View.VISIBLE); // Tampilkan tombol
+                        btn_hubungi.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                if (ownerPhoneNumber != null && !ownerPhoneNumber.isEmpty()) {
+                                    openWhatsApp(ownerPhoneNumber);
+                                } else {
+                                    Toast.makeText(DetailKos.this, "Nomor telepon pemilik tidak tersedia", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     } else {
                         Log.d("DetailKosActivity", "Kos is null");
                     }
@@ -127,6 +145,20 @@ public class DetailKos extends AppCompatActivity {
                 Toast.makeText(DetailKos.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openWhatsApp(String ownerPhoneNumber) {
+        if (ownerPhoneNumber.startsWith("0")) {
+            ownerPhoneNumber = "+62" + ownerPhoneNumber.substring(1);
+        }
+
+        String initialMessage = "Halo, saya tertarik dengan kos Anda. Bisakah saya mendapatkan informasi lebih lanjut?";
+        String encodedMessage = Uri.encode(initialMessage);
+        String whatsappUrl = "https://wa.me/" + ownerPhoneNumber + "?text=" + encodedMessage;
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(whatsappUrl));
+        startActivity(intent);
     }
 
     private void initializeMap(double latitude, double longitude, String namaKos) {
