@@ -18,6 +18,9 @@
         android:theme="@style/Theme.SewaKos"
         tools:targetApi="31">
         <activity
+            android:name=".PemilikKos.EditKos"
+            android:exported="false" />
+        <activity
             android:name=".PemilikKos.SelectLocation"
             android:exported="false" />
         <activity

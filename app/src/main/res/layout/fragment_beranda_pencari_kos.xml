@@ -51,17 +51,24 @@
             android:layout_marginTop="15dp"
             />
 
-        <TextView
-            android:id="@+id/tvNoKosTerdekat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tidak ada kos terdekat"
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:fontFamily="@font/archivo_black"
-            android:layout_below="@+id/terdekatText"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@+id/terdekatText">
+
+            <TextView
+                android:id="@+id/tvNoKosTerdekat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidak ada kos terdekat"
+                android:layout_centerInParent="true"
+                android:visibility="invisible"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewKosTerdekat"

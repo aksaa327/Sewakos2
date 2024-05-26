@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.5"/>
 
     <ImageView
-        android:id="@+id/editIcon"
+        android:id="@+id/btn_edit_kos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:src="@drawable/fi_sr_trash"
-        app:layout_constraintStart_toEndOf="@id/editIcon"
+        app:layout_constraintStart_toEndOf="@id/btn_edit_kos"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

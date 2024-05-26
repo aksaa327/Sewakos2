@@ -3,6 +3,7 @@ package com.example.sewakos.PemilikKos;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,6 +87,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     .setNegativeButton(android.R.string.no, null)
                     .show();
         });
+
+        holder.btnEditKos.setOnClickListener(v -> {
+            Intent intent = new Intent(context, EditKos.class);
+            intent.putExtra("KOS_ID", androidUtil.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -97,13 +104,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         ImageView recyclerImage;
         TextView recyclerNamaKos;
-        ImageView btnDeleteKos;
+        ImageView btnDeleteKos, btnEditKos;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             recyclerImage = itemView.findViewById(R.id.recyclerImage);
             recyclerNamaKos = itemView.findViewById(R.id.recyclerNamaKos);
             btnDeleteKos = itemView.findViewById(R.id.btnDeleteKos);
+            btnEditKos = itemView.findViewById(R.id.btn_edit_kos);
         }
     }
 }
