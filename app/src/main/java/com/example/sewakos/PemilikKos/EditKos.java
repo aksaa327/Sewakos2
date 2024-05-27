@@ -49,7 +49,7 @@ public class EditKos extends AppCompatActivity {
     private LatLng selectedLocation;
 
     private ImageSlider imageSlider;
-    private ImageView upload_image_kos, back_to_beranda;
+    private ImageView upload_image_kos;
     EditText edit_nama_kos, edit_deskripsi_kos, edit_catatan_alamat_kos, edit_ketersediaan_kamar, edit_fasilitas_kos, edit_harga_kos, edit_owner_phone_number;
     private RadioGroup edit_tipe_kos;
     private Button btn_update_kos;
@@ -123,7 +123,6 @@ public class EditKos extends AppCompatActivity {
         edit_owner_phone_number = findViewById(R.id.edit_owner_phone_number);
         btnSelectLocation = findViewById(R.id.btn_select_location);
         tvSelectedLocation = findViewById(R.id.tv_selected_location);
-        back_to_beranda = findViewById(R.id.back_to_beranda);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Updating...");
@@ -155,13 +154,6 @@ public class EditKos extends AppCompatActivity {
                         updateKosDetails();  // Update details without changing images
                     }
                 }
-            }
-        });
-
-        back_to_beranda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BerandaPemilikKos.class));
             }
         });
 

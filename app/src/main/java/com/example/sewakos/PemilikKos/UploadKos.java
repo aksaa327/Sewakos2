@@ -51,7 +51,7 @@ public class UploadKos extends AppCompatActivity {
     private LatLng selectedLocation;
 
     private ImageSlider imageSlider;
-    private ImageView upload_image_kos, back_to_beranda;
+    private ImageView upload_image_kos;
     EditText upload_nama_kos, upload_deskripsi_kos, upload_catatan_alamat_kos, upload_ketersediaan_kamar
             ,upload_fasilitas_kos, upload_harga_kos, upload_owner_phone_number;
     private RadioGroup upload_tipe_kos;
@@ -121,7 +121,6 @@ public class UploadKos extends AppCompatActivity {
         upload_owner_phone_number = findViewById(R.id.upload_owner_phone_number);
         btnSelectLocation = findViewById(R.id.btn_select_location);
         tvSelectedLocation = findViewById(R.id.tv_selected_location);
-        back_to_beranda = findViewById(R.id.back_to_beranda);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
@@ -155,13 +154,6 @@ public class UploadKos extends AppCompatActivity {
                         Toast.makeText(UploadKos.this, "Please Select image", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
-        });
-
-        back_to_beranda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BerandaPemilikKos.class));
             }
         });
 

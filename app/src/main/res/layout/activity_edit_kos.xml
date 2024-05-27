@@ -15,14 +15,6 @@
         >
 
         <ImageView
-            android:id="@+id/back_to_beranda"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/back" />
-
-        <ImageView
             android:id="@+id/tambah_kos_logo"
             android:layout_width="52dp"
             android:layout_height="52dp"
@@ -31,23 +23,15 @@
             android:layout_marginEnd="12dp"
             android:src="@drawable/logo" />
 
-        <RelativeLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toStartOf="@+id/tambah_kos_logo"
-            android:layout_toEndOf="@+id/back_to_beranda">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/archivo_black"
-                android:text="Edit Kos"
-                android:textSize="28sp" />
-
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/archivo_black"
+            android:text="Edit Kos"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:textSize="28sp" />
 
     </RelativeLayout>
 
@@ -89,9 +73,9 @@
                         android:id="@+id/upload_image_kos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/camera"
                         android:layout_centerInParent="true"
-                        android:padding="60dp"/>
+                        android:padding="60dp"
+                        android:src="@drawable/camera" />
 
                 </RelativeLayout>
 
@@ -362,7 +346,7 @@
                 <EditText
                     android:id="@+id/edit_owner_phone_number"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/rectangle_2_shape"
                     android:fontFamily="@font/inter_regular"
                     android:inputType="textMultiLine"

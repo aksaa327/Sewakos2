@@ -39,7 +39,7 @@ import java.util.List;
 public class DetailKos extends AppCompatActivity {
 
     private ImageSlider imageSlider;
-    private ImageView btn_back_to_beranda, profileImageView;
+    private ImageView profileImageView;
     private TextView username, detailNamaKos, detailCatatanAlamatKos, detailDeskripsiKos, detailFasilitasKos, detailHargaKos, detailKetersediaanKamarKos, detailTipeKos;
 
     private Button btn_hubungi;
@@ -60,15 +60,6 @@ public class DetailKos extends AppCompatActivity {
         detailKetersediaanKamarKos = findViewById(R.id.ketersediaanKamarKos);
         detailTipeKos = findViewById(R.id.tipeKos);
         btn_hubungi = findViewById(R.id.btn_hubungi);
-
-        btn_back_to_beranda = findViewById(R.id.btn_back_to_beranda);
-
-        btn_back_to_beranda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BerandaPencariKos.class));
-            }
-        });
 
         String kosId = getIntent().getStringExtra("kosId");
         String userId = getIntent().getStringExtra("userId");
