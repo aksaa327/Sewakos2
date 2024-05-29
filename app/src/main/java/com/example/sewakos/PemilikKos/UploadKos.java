@@ -259,11 +259,10 @@ public class UploadKos extends AppCompatActivity {
             tipeKos = "tidak_ditentukan";
         }
 
-        String folderName = "list kos";
-        final StorageReference folderReference = storageReference.child(folderName);
         final String key = databaseReference.child(userID).push().getKey();
+        String folderName = "list kos/" + userID + "/" + key;
+        final StorageReference folderReference = storageReference.child(folderName);
 
-        // Ambil informasi pengguna
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

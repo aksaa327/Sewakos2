@@ -168,8 +168,13 @@ public class EditKos extends AppCompatActivity {
     }
 
     private void uploadImagesToFirebase() {
+        // Buat folder "list kos" dan subfolder dengan userId dan kosId
+        String folderName = "list kos/" + userId + "/" + kosId;
+        StorageReference folderReference = storageReference.child(folderName);
+
         for (Uri fileUri : selectedUris) {
-            StorageReference fileReference = storageReference.child("images/" + UUID.randomUUID().toString());
+            // Tambahkan file ke subfolder "list kos" dengan nama file unik
+            StorageReference fileReference = folderReference.child(UUID.randomUUID().toString());
             fileReference.putFile(fileUri).addOnSuccessListener(taskSnapshot -> {
                 fileReference.getDownloadUrl().addOnSuccessListener(downloadUri -> {
                     imageUrls.add(downloadUri.toString());
@@ -183,6 +188,7 @@ public class EditKos extends AppCompatActivity {
             });
         }
     }
+
 
     private boolean validateInputs() {
         if (edit_nama_kos.getText().toString().trim().isEmpty()) {
@@ -341,14 +347,11 @@ public class EditKos extends AppCompatActivity {
 
     }
 
-    /*
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(contentResolver.getType(uri));
     }
-
-     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
